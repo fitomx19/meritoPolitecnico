@@ -30,20 +30,20 @@ class ProfesorModel {
         return $result;
     }
 
+    private function logError($message) {
+        error_log("Error: $message");
+    }
+
+
      
     public function cambiarAsistire($idProfesor, $asistire, $discapacidad, $acompanante, $asistencia_acompanante) {
-    try {
-        error_log("Cambiando estatus de asistire - ID Profesor: 3 " . $idProfesor . ", Asistira: $asistire, Discapacidad: $discapacidad, Acompanante: $acompanante, Asistencia Acompanante: $asistencia_acompanante");
-
-        $stmt = $this->db->prepare("UPDATE profesor SET asistire = ?, discapacidad = ?,  acompanante = ? , acompanante_discapacitado = ?  WHERE id = ?");
-        $stmt->execute([$asistire, $discapacidad, $acompanante, $asistencia_acompanante,  $idProfesor]);
-        
-         
-
-    } catch (PDOException $e) {
-        error_log ( "Error al actualizar el estatus de asistire: " . $e->getMessage());
+        try {
+            $stmt = $this->db->prepare("UPDATE profesor SET asistire = ?, discapacidad = ?,  acompanante = ? , acompanante_discapacitado = ?  WHERE id = ?");
+            $stmt->execute([$asistire, $discapacidad, $acompanante, $asistencia_acompanante,  $idProfesor]);
+        } catch (PDOException $e) {
+            $this->logError("Error al actualizar el estatus de asistire: " . $e->getMessage());
+        }
     }
-}
 
     // Función para obtener la información del profesor
     public function obtenerProfesor($idProfesor) {
@@ -54,6 +54,53 @@ class ProfesorModel {
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
         return $result;
+    }
+
+    //funcion para obtener la informacion de los profesores
+    public function obtenerProfesores() {
+        $stmt = $this->db->prepare("SELECT * FROM profesor");
+        $stmt->execute();
+
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $result;
+    }
+
+ 
+
+    //funcion para crear un nuevo profesor
+    public function crearProfesor($nombre, $dependencia , $distincion , $categoria, $curp , $acompanante , $acompanante_discapacitado, $asistire, $discapacidad) {
+        try{
+            $stmt = $this->db->prepare("INSERT INTO profesor (nombre, dependencia, distincion, categoria, curp, acompanante, acompanante_discapacitado, asistire, discapacidad) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt->execute([$nombre, $dependencia , $distincion , $categoria, $curp , $acompanante , $acompanante_discapacitado, $asistire, $discapacidad]);
+        } catch (PDOException $e) {
+            $this->logError("Error al crear el profesor: " . $e->getMessage());
+        }
+    }
+
+    //funcion para actualizar un profesor
+    public function actualizarProfesor($idProfesor, $nombre, $dependencia , $distincion , $categoria, $curp , $acompanante , $acompanante_discapacitado, $asistire, $discapacidad) {
+        try {
+            $stmt = $this->db->prepare("UPDATE profesor SET nombre = ?, dependencia = ?, distincion = ?, categoria = ?, curp = ?, acompanante = ?, acompanante_discapacitado = ?, asistire = ?, discapacidad = ? WHERE id = ?");
+            $stmt->execute([$nombre, $dependencia , $distincion , $categoria, $curp , $acompanante , $acompanante_discapacitado, $asistire, $discapacidad, $idProfesor]);
+        } catch (PDOException $e) {
+            $this->logError("Error al actualizar el profesor: " . $e->getMessage());
+        }
+    }
+
+    //funcion para eliminar un profesor
+    public function eliminarProfesor($idProfesor) {
+        try {
+            error_log("Eliminando profesor - ID Profesor: " . $idProfesor);
+
+            $stmt = $this->db->prepare("DELETE FROM profesor WHERE id = ?");
+            $stmt->execute([$idProfesor]);
+            
+             
+
+        } catch (PDOException $e) {
+            error_log ( "Error al eliminar el profesor: " . $e->getMessage());
+        }
     }
 
 }

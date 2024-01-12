@@ -1,7 +1,6 @@
 <?php
 require_once('controllers/loginController.php');
 
-
 // Obtener la acción del formulario o de la URL
 $action = $_GET['action'] ?? '';
 

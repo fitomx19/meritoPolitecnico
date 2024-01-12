@@ -8,19 +8,22 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 <body class="container mt-5">
-    <h1 class="mb-4">Bienvenido a la página de bienvenida (ya_inicio = false)</h1>
+    <h1 class="mb-4">Bienvenido a el administrador de entradas para boletos de Premio al Mérito Polítecnico </h1>
 
     <?php
     // Mostrar la información del profesor con estilos de Bootstrap
-    echo "<p><strong>Nombre:</strong> " . $profesor['nombre'] . "</p>";
-    echo "<p><strong>Dependencia:</strong> " . $profesor['dependencia'] . "</p>";
-    echo "<p><strong>Distinción:</strong> " . $profesor['distincion'] . "</p>";
-    echo "<p><strong>Categoría:</strong> " . $profesor['categoria'] . "</p>";
-    echo "<p><strong>CURP:</strong> " . $profesor['curp'] . "</p>";
-     
+    echo "<div class='card'>";
+    echo "<div class='card-body'>";
+    echo "<p class='card-text'><strong>Nombre:</strong> " . $profesor['nombre'] . "</p>";
+    echo "<p class='card-text'><strong>Dependencia:</strong> " . $profesor['dependencia'] . "</p>";
+    echo "<p class='card-text'><strong>Distinción:</strong> " . $profesor['distincion'] . "</p>";
+    echo "<p class='card-text'><strong>Categoría:</strong> " . $profesor['categoria'] . "</p>";
+    echo "<p class='card-text'><strong>CURP:</strong> " . $profesor['curp'] . "</p>";
+    echo "</div>";
+    echo "</div>";
 
     // Mostrar formulario para cambiar el estatus de "asistire"
-    echo '<form method="post" action="index.php?action=changeAsistire">';
+    echo '<form method="post" action="index.php?action=changeAsistire" class="mt-4">';
     echo '<div class="form-group">';
     echo '<input type="hidden" name="id_profesor" value="' . $profesor["id"] . '">';
     echo '<label for="asistire">Asistiré:</label>';

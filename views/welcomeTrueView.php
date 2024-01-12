@@ -8,30 +8,31 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 <body class="container mt-5">
-    <?php echo "<h1><strong>Bienvenido:</strong> " . $profesor['nombre'] . "</h1>";?>
+    <div class="jumbotron">
+        <?php echo "<h1 class='display-4'>Bienvenido: " . $profesor['nombre'] . "</h1>";?>
+    </div>
 
-    <?php
-    // Mostrar la información del profesor con estilos de Bootstrap
-    echo "<br/>";
-    echo "<p><strong>Tus datos: </strong>";
-    echo "<p><strong>Nombre:</strong> " . $profesor['nombre'] . "</p>";
-    echo "<p><strong>Dependencia:</strong> " . $profesor['dependencia'] . "</p>";
-    echo "<p><strong>Distinción:</strong> " . $profesor['distincion'] . "</p>";
-    echo "<p><strong>Categoría:</strong> " . $profesor['categoria'] . "</p>";
-    echo "<p><strong>CURP:</strong> " . $profesor['curp'] . "</p>";
-    echo "<p><strong>Asistencia confirmada:</strong> " . ($profesor['asistire'] ? 'Sí' : 'No') . "</p>";
-    echo "<p><strong>¿Requieres apoyo? :</strong> " . $profesor['discapacidad'] . "</p>";
-    echo "<p><strong>Acompañante:</strong> " . ($profesor['acompanante'] ? 'Sí' : 'No') . "</p>";
-    echo "<p><strong>Acompañante discapacitado:</strong> "  . $profesor['acompanante_discapacitado'] . "</p>";
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Tus datos</h5>
+            <ul class="list-group">
+                <li class="list-group-item"><strong>Nombre:</strong> <?php echo $profesor['nombre']; ?></li>
+                <li class="list-group-item"><strong>Dependencia:</strong> <?php echo $profesor['dependencia']; ?></li>
+                <li class="list-group-item"><strong>Distinción:</strong> <?php echo $profesor['distincion']; ?></li>
+                <li class="list-group-item"><strong>Categoría:</strong> <?php echo $profesor['categoria']; ?></li>
+                <li class="list-group-item"><strong>CURP:</strong> <?php echo $profesor['curp']; ?></li>
+                <li class="list-group-item"><strong>Asistencia confirmada:</strong> <?php echo $profesor['asistire'] ? 'Sí' : 'No'; ?></li>
+                <li class="list-group-item"><strong>¿Requieres apoyo? :</strong> <?php echo $profesor['discapacidad']; ?></li>
+                <li class="list-group-item"><strong>Acompañante:</strong> <?php echo $profesor['acompanante'] ? 'Sí' : 'No'; ?></li>
+                <li class="list-group-item"><strong>Acompañante discapacitado:</strong> <?php echo $profesor['acompanante_discapacitado']; ?></li>
+            </ul>
 
-    // Agrega el botón de cierre de sesión
-    echo '<a href="index.php?action=logout" class="btn btn-primary">Cerrar Sesión</a>';
+            <!-- Agrega el botón de cierre de sesión -->
+            <a href="index.php?action=logout" class="btn btn-danger mt-3">Cerrar Sesión</a>
 
-    
-    ?>
-
-    <div>
-        <a href="fpdf/PruebaV.php" class="btn btn-primary">Generar reporte</a>
+            <!-- Agrega el enlace para consultar entrada con estilos de Bootstrap -->
+            <a href="fpdf/PruebaV.php?nombre=<?php echo urlencode($profesor['nombre']); ?>&dependencia=<?php echo urlencode($profesor['dependencia']); ?>&distincion=<?php echo urlencode($profesor['distincion']); ?>&categoria=<?php echo urlencode($profesor['categoria']); ?>&curp=<?php echo urlencode($profesor['curp']); ?>&asistire=<?php echo urlencode($profesor['asistire']); ?>&discapacidad=<?php echo urlencode($profesor['discapacidad']); ?>&acompanante=<?php echo urlencode($profesor['acompanante']); ?>&acompanante_discapacitado=<?php echo urlencode($profesor['acompanante_discapacitado']); ?>&codigo_acceso=<?php echo rand(1000, 9999); ?>" class="btn btn-primary mt-3">Consultar Entrada</a>
+        </div>
     </div>
 
     <!-- Agrega el script de Bootstrap (jQuery y Popper.js son necesarios para Bootstrap) -->
