@@ -1,14 +1,49 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bienvenido</title>
-    <!-- Agrega la referencia de Bootstrap (puedes cambiar a la versión que prefieras) -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            color: black;
+        }
+
+        h1 {
+            color: #800000; /* Guinda */
+        }
+
+        .card {
+            border: 1px solid #800000; /* Guinda */
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .card-body {
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .btn-primary {
+            background-color: #800000; /* Guinda */
+            border-color: #800000; /* Guinda */
+        }
+
+        .btn-primary:hover {
+            background-color: #600000; /* Guinda más oscuro al pasar el mouse */
+            border-color: #600000; /* Guinda más oscuro al pasar el mouse */
+        }
+    </style>
 </head>
+
 <body class="container mt-5">
-    <h1 class="mb-4">Bienvenido a el administrador de entradas para boletos de Premio al Mérito Polítecnico </h1>
+    <h1 class="mb-4">Bienvenido al administrador de entradas para boletos de Premio al Mérito Politécnico </h1>
 
     <?php
     // Mostrar la información del profesor con estilos de Bootstrap
@@ -63,9 +98,9 @@
     echo '</form>';
     ?>
 
-    <!-- Agrega el script de Bootstrap (jQuery y Popper.js son necesarios para Bootstrap) -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
+
 </html>

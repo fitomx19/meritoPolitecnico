@@ -1,15 +1,54 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bienvenido</title>
-    <!-- Agrega la referencia de Bootstrap (puedes cambiar a la versión que prefieras) -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            color: black;
+        }
+
+        .jumbotron {
+            background-color: #800000; /* Guinda */
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+        }
+
+        .card {
+            border: 1px solid #800000; /* Guinda */
+            border-radius: 10px;
+        }
+
+        .card-body {
+            text-align: left;
+        }
+
+        .list-group-item {
+            border-color: #800000; /* Guinda */
+        }
+
+        .btn {
+            background-color: #800000; /* Guinda */
+            border-color: #800000; /* Guinda */
+        }
+
+        .btn:hover {
+            background-color: #600000; /* Guinda más oscuro al pasar el mouse */
+            border-color: #600000; /* Guinda más oscuro al pasar el mouse */
+        }
+    </style>
 </head>
+
 <body class="container mt-5">
     <div class="jumbotron">
-        <?php echo "<h1 class='display-4'>Bienvenido: " . $profesor['nombre'] . "</h1>";?>
+        <?php echo "<h1 class='display-4'>Bienvenido: " . $profesor['nombre'] . "</h1>"; ?>
     </div>
 
     <div class="card">
@@ -35,9 +74,9 @@
         </div>
     </div>
 
-    <!-- Agrega el script de Bootstrap (jQuery y Popper.js son necesarios para Bootstrap) -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
+
 </html>
